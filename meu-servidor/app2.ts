@@ -9,7 +9,7 @@ app.get("/user", (req: Request, res: Response) => {
     const user = {
         name: "Jhon Doe",
         age: 25,
-        email: "Jhon.doe@example.com",
+        email: "jhon.doe@example.com",
     };
 
     res.json(user);
