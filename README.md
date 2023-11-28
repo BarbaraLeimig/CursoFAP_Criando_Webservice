@@ -19,14 +19,14 @@ npm install -g ts-node
 npm install @types/node
 
 ## Instalando o Express
-###Instale o Express como dependências de desenvolvimento do seu projeto
+### Instale o Express como dependências de desenvolvimento do seu projeto
 npm install -D express
 
 ### Instale a dependência @types/express para que possamos
 trabalhar com requisições e respostas
 npm install @types/express
 
-###Instale o Nodemon
+### Instale o Nodemon
 npm install nodemon
 
 ## Executando o Servidor
