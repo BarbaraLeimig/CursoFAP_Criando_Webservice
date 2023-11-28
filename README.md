@@ -22,7 +22,7 @@ npm install @types/node
 ###Instale o Express como dependências de desenvolvimento do seu projeto
 npm install -D express
 
-### instalar a dependência @types/express para que possamos
+### Instale a dependência @types/express para que possamos
 trabalhar com requisições e respostas
 npm install @types/express
 
