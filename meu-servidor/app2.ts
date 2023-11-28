@@ -5,8 +5,15 @@ import express, { Request, Response } from "express";
 const app = express();
 
 // Definir uma rota simples
-app.get("/", (req: Request, res: Response) => {
-    res.send("Bem-vindo ao meu web service!");
+app.get("/user", (req: Request, res: Response) => {
+    const user = {
+        name: "Jhon Doe",
+        age: 25,
+        email: "Jhon.doe@example.com",
+    };
+
+    res.json(user);
+});
 
 // Definir a porta em que o servidor irá ouvir
 const PORT: number = 3000;
