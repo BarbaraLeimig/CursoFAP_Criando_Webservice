@@ -8,6 +8,13 @@ const app = express();
 // Middleware BodyParser para processar dados nas solicitações POST e PUT
 app.use(bodyParser.json());
 
+// Armazenamento de exemplo para usuários
+const users = [
+    { id: 1, name: "Jhon Doe", age: 25, email: "jhon.doe@example.com" },
+    { id: 2, name: "Alice", age: 30, email: "alice@example.com" },
+    { id: 3, name: "Bob", age: 28, email: "bob@example.com" },
+];
+
 // Definir uma rota simples
 app.get("/user", (req: Request, res: Response) => {
     const user = {
@@ -21,22 +28,15 @@ app.get("/user", (req: Request, res: Response) => {
 
 // Novo endpoint de usuários (listagem de todos os usuários)
 app.get("/users", (req: Request, res: Response) => {
-    const users = [
-        { id: 1, name: "Alice", age: 30, email: "alice@example.com" },
-        { id: 2, name: "Bob", age: 28, email: "bob@example.com" },
-        // ... outros usuários
-    ];
-
     res.json(users);
 });
 
 // Rota HTTP para detalhes do usuário (com base no ID)
 app.get("/user/:id", (req: Request, res: Response) => {
-    const userId = req.params.id;
+    const userId = parseInt(req.params.id, 10);
 
-    // Implementar lógica para obter e retornar os detalhes do usuário com base no ID
-    // (pode ser de um banco de dados, array, etc.)
-    const user = /* lógica para obter usuário com base no ID */;
+    // Encontrar o usuário com base no ID
+    const user = users.find(u => u.id === userId);
 
     if (user) {
         res.json(user);
@@ -49,9 +49,14 @@ app.get("/user/:id", (req: Request, res: Response) => {
 app.post("/user", (req: Request, res: Response) => {
     const { name, age, email } = req.body;
 
-    // Implementar lógica para adicionar um novo usuário
-    // (pode ser a inserção em um banco de dados, array, etc.)
-    const newUser = { name, age, email, id: /* gerar um ID único */ };
+    // Gerar um novo ID (simplificado, pode precisar de uma lógica mais robusta)
+    const newUserId = users.length + 1;
+
+    // Criar um novo usuário
+    const newUser = { id: newUserId, name, age, email };
+
+    // Adicionar o novo usuário à lista de usuários
+    users.push(newUser);
 
     res.status(201).json(newUser); // 201 indica criação bem-sucedida
 });
